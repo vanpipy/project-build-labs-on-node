@@ -4,10 +4,31 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <title>Meadowlark Travel</title>
+        {{#if showTests}}
+            <link rel="stylesheet" href="/vendor/mocha.css" type="text/css" />
+        {{/if}}
+        <script src="https://lib.baomitu.com/jquery/3.5.0/jquery.min.js"></script>
     </head>
     <body>
         <img src="/imgs/logo.jpg" alt="Weadawlark" />
 
         {{{body}}}
+
+        {{#if showTests}}
+            <div id="mocha"></div>
+            <script src="/vendor/mocha.js"></script>
+            <script src="/vendor/chai.js"></script>
+            <script charset="utf-8">
+                mocha.ui('tdd');
+                var assert = chai.assert;
+            </script>
+            <script src="/qa/tests.global.js"></script>
+            {{#if pageTestScript}}
+                <script src="{{pageTestScript}}"></script>
+            {{/if}}
+            <script charset="utf-8">
+                mocha.run();
+            </script>
+        {{/if}}
     </body>
 </html>

@@ -10,6 +10,7 @@ const exphds = require('express-handlebars');
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
+app.set('env', process.env.ENV || 'development');
 
 app.engine('hbs', exphds({
     extname: 'hbs'
@@ -18,6 +19,11 @@ app.set('view engine', 'hbs');
 
 app.use(morgan());
 app.use(express.static(resolve(__dirname, 'public')));
+
+app.use((req, res, next) => {
+    res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
+    next();
+});
 
 app.get('/', (req, res) => {
     res.type('text/html');
@@ -35,7 +41,8 @@ app.get('/about', (req, res) => {
 
     res.type('text/html');
     res.render('about', {
-        fortune: fortune[Math.floor(Math.random() * 10 % fortune.length)]
+        fortune: fortune[Math.floor(Math.random() * 10 % fortune.length)],
+        pageTestScript: '/qa/tests.about.js'
     });
 });
 
