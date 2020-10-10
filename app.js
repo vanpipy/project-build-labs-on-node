@@ -46,6 +46,16 @@ app.get('/about', (req, res) => {
     });
 });
 
+app.get('/tours/hood-river', (req, res) => {
+    res.type('text/html');
+    res.render('tours/hood-river');
+});
+
+app.get('/tours/request-group-rate', (req, res) => {
+    res.type('text/html');
+    res.render('tours/request-group-rate');
+});
+
 app.use((req, res) => {
     res.type('text/html');
     res.status(404);
