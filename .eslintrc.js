@@ -25,11 +25,13 @@ module.exports = {
     'vue'
   ],
   settings: {
-    'import/resolver': {
-      webpack: {
-        config: 'build/webpack.base.conf.js'
-      }
-    }
+    /*
+     *'import/resolver': {
+     *  webpack: {
+     *    config: 'build/webpack.base.conf.js'
+     *  }
+     *}
+     */
   },
   // add your custom rules here
   rules: {
@@ -57,7 +59,7 @@ module.exports = {
     "no-console": process.env.NODE_ENV === 'production' ? 'error' : 'off', // 正式环境，禁止使用console
     "no-constant-condition": 2, // 禁止在条件中使用常量表达式 if(true) if(1)
     "no-var": 2, // 避免使用var     2.2
-    "no-dupe-args": 2, // 函数定义的时候不允许出现重复的参数    
+    "no-dupe-args": 2, // 函数定义的时候不允许出现重复的参数
     "no-dupe-keys": 2, // 对象中不允许出现重复的键
     "no-duplicate-case": 2, // switch语句中不允许出现重复的case标签
     "no-array-constructor": 2, // 使用字面量创建数组        4.1

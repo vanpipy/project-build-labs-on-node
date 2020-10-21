@@ -1,0 +1,85 @@
+{
+  "name": "project-output-sdk-bundle",
+  "version": "0.0.1",
+  "description": "a package as a SDK bundle and many children chunks",
+  "main": "entry.js",
+  "scripts": {
+    "lint": "eslint --ext .ts,.vue src",
+    "test": "echo \"None\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanpipy/project-build-labs-on-node.git"
+  },
+  "keywords": [
+    "library"
+  ],
+  "author": "vanpipy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vanpipy/project-build-labs-on-node/issues"
+  },
+  "homepage": "https://github.com/vanpipy/project-build-labs-on-node#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^5.2.4",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli": "^4.5.8",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "@vue/test-utils": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.1.2",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.1.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/airbnb",
+      "@vue/typescript/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "parser": "@typescript-eslint/parser"
+    },
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
