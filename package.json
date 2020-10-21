@@ -20,12 +20,29 @@
     "url": "https://github.com/vanpipy/project-build-labs-on-node/issues"
   },
   "homepage": "https://github.com/vanpipy/project-build-labs-on-node#readme",
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.12",
+    "vue-class-component": "^7.2.6",
+    "vue-property-decorator": "^9.0.2",
+    "vuex": "^3.5.1"
+  },
   "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^5.2.4",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-plugin-transform-vue-jsx": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.3",
     "@vue/cli": "^4.5.8",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -36,46 +53,20 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^1.0.3",
-    "babel-eslint": "^10.1.0",
+    "autoprefixer": "^9.1.5",
+    "babel-loader": "^8.1.0",
     "chai": "^4.1.2",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "eslint": "^6.7.2",
+    "eslint": "^7.11.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.1.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^5.1.3",
     "webpack-cli": "^4.1.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/airbnb",
-      "@vue/typescript/recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "parser": "@typescript-eslint/parser"
-    },
-    "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "mocha": true
-        }
-      }
-    ]
   },
   "browserslist": [
     "> 1%",
