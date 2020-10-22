@@ -4,7 +4,6 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 
 module.exports = {
     mode: 'development',
@@ -25,9 +24,16 @@ module.exports = {
                 use: 'vue-loader'
             },
             {
-                test: /\.ts$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: 'ts-loader'
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            appendTsSuffixTo: [/\.vue$/]
+                        },
+                    }
+                ],
             },
             {
                 test: /\.(css|less)$/,
@@ -48,13 +54,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
             filename: 'index.html'
-        }),
-        new Serve({
-            host: 'localhost',
-            port: 9090,
-            hmr: true,
-            compress: true,
-            static: path.resolve(__dirname, '../dist')
         })
     ],
     optimization: {
@@ -73,6 +72,5 @@ module.exports = {
                 default: false
             }
         }
-    },
-    watch: true
+    }
 }
