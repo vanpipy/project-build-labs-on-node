@@ -3,15 +3,21 @@ module.exports = {
   env: {
     node: true,
   },
-  parser: "@typescript-eslint/parser",
+  parser: "vue-eslint-parser",
   extends: [
     'plugin:vue/essential',
     '@vue/airbnb',
     '@vue/typescript/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   parserOptions: {
     ecmaVersion: 2020,
+    parser: '@typescript-eslint/parser'
   },
+  plugins:  [
+    '@typescript-eslint'
+  ],
   settings: {
     "import/extensions": ['.js', '.ts']
   },
