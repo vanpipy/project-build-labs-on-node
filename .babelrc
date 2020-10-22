@@ -3,6 +3,6 @@
     '@vue/cli-plugin-babel/preset'
   ],
   "plugins": [
-    "transform-vue-jsx"
+    "@vue/babel-plugin-transform-vue-jsx"
   ]
 }
