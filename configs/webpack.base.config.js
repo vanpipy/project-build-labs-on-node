@@ -14,13 +14,21 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, '../dist')
+        path: path.resolve(__dirname, '../dist'),
+        publicPath: './'
     },
     module: {
         rules: [
             {
                 test: /\.vue$/,
-                use: 'vue-loader'
+                use: [
+                    {
+                        loader: 'vue-loader',
+                        options: {
+
+                        }
+                    }
+                ]
             },
             {
                 test: /\.tsx?$/,
@@ -41,11 +49,39 @@ module.exports = {
                     'css-loader',
                     'less-loader'
                 ]
+            },
+            {
+                test: /\.png|jpe?g|gif/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            esModule: false
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.png|jpe?g|gif/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 4096,
+                            esModule: false
+                        }
+                    }
+                ]
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.ts', '.json', '.vue', '.css', '.less']
+        extensions: ['.js', '.ts', '.json', '.vue', '.css', '.less'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            'vuex': 'vuex/dist/vuex.esm.js',
+            '@': path.resolve(__dirname, '../src')
+        }
     },
     plugins: [
         new VueLoaderPlugin(),
