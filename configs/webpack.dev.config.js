@@ -9,9 +9,20 @@ const baseConfig = require('./webpack.base.config');
 
 dotenv.config({ path: resolve(__dirname, '../.env.local') });
 
+const isVueScriptFiles = info => info.resourcePath.match(/\.vue$/) && !info.resource.match(/type=script/);
+
 module.exports = merge(baseConfig, {
     mode: 'development',
-    devtool: 'eval-cheap-source-map' ,
+    output: {
+        devtoolModuleFilenameTemplate: info => {
+            let $filename = 'sources://' + info.resourcePath;
+            if (isVueScriptFiles(info)) {
+                $filename = 'webpack-generated:///' + info.resourcePath + '?' + info.hash;
+            }
+            return $filename;
+        }
+    },
+    devtool: 'eval-source-map' ,
     plugins: baseConfig.plugins.concat([
         new Serve({
             host: process.env.HOST,
