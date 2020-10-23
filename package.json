@@ -7,6 +7,7 @@
     "lint:js": "eslint --ext .ts,.vue src",
     "lint:css": "stylelint src/**/*.vue",
     "dev": "webpack --config ./configs/webpack.dev.config.js",
+    "build": "webpack --config ./configs/webpack.prod.config.js",
     "test": "echo \"None\""
   },
   "repository": {
