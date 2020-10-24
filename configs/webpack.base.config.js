@@ -49,17 +49,23 @@ module.exports = {
                     'less-loader'
                 ]
             },
-            {
-                test: /\.(png|jpe?g|gif|svg)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            esModule: false
-                        }
-                    }
-                ]
-            },
+            /*
+             * Comment it cause the [issue](https://github.com/vuejs/vue-loader/issues/1751)
+             */
+            /*
+             *{
+             *    test: /\.(png|jpe?g|gif|svg)$/i,
+             *    use: [
+             *        {
+             *            loader: 'file-loader',
+             *            options: {
+             *                esModule: false,
+             *                name: 'assets/[name].[hash].[ext]'
+             *            }
+             *        }
+             *    ]
+             *},
+             */
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: [
@@ -77,8 +83,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.ts', '.json', '.vue', '.css', '.less'],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-            'vuex': 'vuex/dist/vuex.esm.js',
+            vue$: 'vue/dist/vue.esm.js',
+            vuex$: 'vuex/dist/vuex.esm.js',
             '@': path.resolve(__dirname, '../src')
         }
     },
@@ -87,7 +93,8 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
-            filename: 'index.html'
+            filename: 'index.html',
+            inject: true
         })
     ],
     optimization: {
