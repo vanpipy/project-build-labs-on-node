@@ -13,6 +13,11 @@ const isVueScriptFiles = info => info.resourcePath.match(/\.vue$/) && !info.reso
 
 module.exports = merge(baseConfig, {
     mode: 'development',
+    entry: {
+        main: [
+            'webpack-plugin-serve/client'
+        ]
+    },
     output: {
         devtoolModuleFilenameTemplate: info => {
             let $filename = 'sources://' + info.resourcePath;
@@ -23,7 +28,7 @@ module.exports = merge(baseConfig, {
         }
     },
     devtool: 'eval-source-map' ,
-    plugins: baseConfig.plugins.concat([
+    plugins: [
         new Serve({
             host: process.env.HOST,
             port: Number(process.env.PORT),
@@ -31,6 +36,6 @@ module.exports = merge(baseConfig, {
             open: true,
             static: resolve(__dirname, '../dist')
         })
-    ]),
+    ],
     watch: true
 });

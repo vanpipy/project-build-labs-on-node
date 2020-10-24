@@ -8,8 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         main: [
-            path.resolve(__dirname, '../src/main.ts'),
-            'webpack-plugin-serve/client'
+            path.resolve(__dirname, '../src/main.ts')
         ]
     },
     output: {
