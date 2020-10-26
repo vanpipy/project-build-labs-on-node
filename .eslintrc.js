@@ -6,7 +6,7 @@ module.exports = {
   parser: "vue-eslint-parser",
   extends: [
     'plugin:vue/essential',
-    '@vue/airbnb',
+    'airbnb-base',
     '@vue/typescript/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended'
@@ -19,11 +19,30 @@ module.exports = {
     '@typescript-eslint'
   ],
   settings: {
-    "import/extensions": ['.js', '.ts']
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/parser': {
+      '@typescript-eslint/parser': ['.ts', '.tsx']
+    },
+    'import/resolver': {
+      'node': {
+          'extensions': ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
+    indent: ['error', 4]
   },
   overrides: [
     {
@@ -32,7 +51,7 @@ module.exports = {
         '**/tests/unit/**/*.spec.{j,t}s?(x)',
       ],
       env: {
-        mocha: true,
+        jest: true,
       },
     },
   ],
