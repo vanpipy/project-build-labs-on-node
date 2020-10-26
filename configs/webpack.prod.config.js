@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 const { merge } = require('webpack-merge');
 const { resolve } = require('path');
 const { existsSync } = require('fs');
-const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 
 const baseConfig = require('./webpack.base.config');
 
