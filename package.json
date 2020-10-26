@@ -24,13 +24,13 @@
   },
   "homepage": "https://github.com/vanpipy/project-build-labs-on-node#readme",
   "dependencies": {
+    "@vue/server-test-utils": "^1.1.0",
+    "@vue/test-utils": "^1.1.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.12",
     "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.0.2",
-    "vuex": "^3.5.1",
-    "@vue/server-test-utils": "^1.1.0",
-    "@vue/test-utils": "^1.1.0"
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -89,7 +89,8 @@
     "webpack-cli": "^4.1.0",
     "webpack-merge": "^5.2.0",
     "webpack-nano": "^1.1.0",
-    "webpack-plugin-serve": "^1.2.0"
+    "webpack-plugin-serve": "^1.2.0",
+    "yargs": "^16.1.0"
   },
   "browserslist": [
     "> 1%",
