@@ -1,11 +1,13 @@
 'use strict';
 
+const { readFileSync } = require('fs');
 const dotenv = require('dotenv');
 const { merge } = require('webpack-merge');
 const { resolve } = require('path');
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 
 const baseConfig = require('./webpack.base.config');
+const mocker = require('../mock');
 
 dotenv.config({ path: resolve(__dirname, '../.env.local') });
 
@@ -29,13 +31,24 @@ module.exports = merge(baseConfig, {
     },
     devtool: 'eval-source-map' ,
     plugins: [
-        new Serve({
+        new Serve(Object.assign({
             host: process.env.HOST,
             port: Number(process.env.PORT),
             hmr: true,
             open: true,
-            static: resolve(__dirname, '../dist')
-        })
+            static: resolve(__dirname, '../dist'),
+            middleware: (app, builtins) => {
+                app.use(mocker.routes());
+                app.use(builtins.proxy('/google', {
+                    target: 'https://google.com'
+                }));
+            }
+        }, process.env.ENABLE_HTTPS == 1 && {
+            https: {
+                key: readFileSync('test/fixtures/keys/agent-key.pem'),
+                cert: readFileSync('test/fixtures/keys/agent-cert.pem')
+            }
+        }))
     ],
     watch: true
 });
