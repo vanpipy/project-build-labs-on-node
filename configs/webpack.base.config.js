@@ -49,31 +49,21 @@ module.exports = {
                     'less-loader'
                 ]
             },
-            /*
-             * Comment it cause the [issue](https://github.com/vuejs/vue-loader/issues/1751)
-             */
-            /*
-             *{
-             *    test: /\.(png|jpe?g|gif|svg)$/i,
-             *    use: [
-             *        {
-             *            loader: 'file-loader',
-             *            options: {
-             *                esModule: false,
-             *                name: 'assets/[name].[hash].[ext]'
-             *            }
-             *        }
-             *    ]
-             *},
-             */
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 4096,
-                            esModule: false
+                            limit: 10,
+                            esModule: false,
+                            fallback: {
+                                loader: 'file-loader',
+                                options: {
+                                    esModule: false,
+                                    name: 'assets/[name].[hash].[ext]'
+                                }
+                            }
                         }
                     }
                 ]
