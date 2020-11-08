@@ -1,0 +1,19 @@
+
+    if (typeof document !== 'undefined') {
+        var __$$script = document.createElement('script');
+
+        __$$script.innerHTML = `
+            var __$$config = <config>;
+            var _$script;
+
+            for (var each in __$$config) {
+                _$script = document.createElement('script');
+                _$script.type = 'text/javascript';
+                _$script.src = __$$config[each];
+
+                document.body.appendChild(_$script);
+            }
+        `;
+
+        document.body.appendChild(__$$script);
+    }

@@ -6,13 +6,18 @@ const { Command } = require('commander');
 
 const program = new Command();
 const runWebpack = require('./runWebpack');
+const createSdk = require('./createSdk');
 
 const DEV = 'dev';
 const PROD = 'prod';
 
+program.version('0.1.0');
+
 program
-    .version('0.1.0')
     .option('-m --mode <mode>', 'set the mode to execute the webpack');
+
+program
+    .option('--create-sdk <dir>', 'create the software development kit');
 
 program.on('option:mode', () => {
     if (program.mode === DEV) {
@@ -24,8 +29,8 @@ program.on('option:mode', () => {
     }
 });
 
-program.parse(process.argv);
+program.on('option:create-sdk', () => {
+    createSdk(program.createSdk);
+});
 
-if (!program.mode) {
-    runWebpack.watch(DEV);
-}
+program.parse(process.argv);
