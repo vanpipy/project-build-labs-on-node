@@ -1,25 +1,31 @@
-'use strict';
+#!/usr/bin/env node
 
 const { resolve } = require('path');
 const webpack = require('webpack');
-const yargs = require('yargs/yargs');
-const argv = yargs(process.argv.slice(2)).parse();
-const mode = argv.runner || 'dev';
-const config = require(resolve(__dirname, `../configs/webpack.${mode}.config.js`));
-const runner = {
-    dev: 'run',
-    prod: 'run',
-    test: 'watch'
-};
+const { Command } = require('commander');
 
-const compiler = webpack(config);
+const program = new Command();
+const runWebpack = require('./runWebpack');
 
-class Compiler {
-    constructor(props) {
-        this.compiler = props.compiler;
+const DEV = 'dev';
+const PROD = 'prod';
+
+program
+    .version('0.1.0')
+    .option('-m --mode <mode>', 'set the mode to execute the webpack');
+
+program.on('option:mode', () => {
+    if (program.mode === DEV) {
+        runWebpack.watch(DEV);
     }
 
-    run(args) {
-
+    if (program.mode === PROD) {
+        runWebpack.pack(PROD);
     }
+});
+
+program.parse(process.argv);
+
+if (!program.mode) {
+    runWebpack.watch(DEV);
 }
