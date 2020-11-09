@@ -1,9 +1,22 @@
 
 const { resolve } = require('path');
 const webpack = require('webpack');
+const chalk = require('chalk');
+const bytes = require('bytes');
 
-const outputResource = (resource) => {
-    // TODO: output the resource which has the format as wish.
+const outputChunkInfo = ({
+    title,
+    resource
+}) => {
+    for (let each in resource) {
+        each = resource[each];
+
+        const mainSegment = chalk`{bold ${title}} ${each.id} hash:${each.hash}`;
+        const sizeSegment = chalk`${each.id} {bold ${bytes(each.size)}}`;
+        const statusSegment = `${each.entry ? '[entry]' : ''} ${each.initial ? '[initial]' : ''} ${each.rendered ? '[rendered]' : ''}`;
+
+        console.log(`${mainSegment} ${sizeSegment} ${statusSegment}`);
+    }
 };
 
 const pack = (mode) => {
@@ -30,10 +43,11 @@ const watch = (mode) => {
 
         const statsJson = stats.toJson();
 
-        outputResource(statsJson.assetsByChunkName);
-        outputResource(statsJson.assets);
-        outputResource(statsJson.chunks);
-        outputResource(statsJson.modules);
+        console.log('\n');
+        outputChunkInfo({
+            title: 'chunk',
+            resource: statsJson.chunks
+        });
     });
 };
 
