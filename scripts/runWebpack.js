@@ -4,6 +4,9 @@ const webpack = require('webpack');
 const chalk = require('chalk');
 const bytes = require('bytes');
 
+/*
+ * TODO: Please refer to [webpack stats object](https://webpack.js.org/api/stats/#chunk-objects)
+ */
 const outputChunkInfo = ({
     title,
     resource
