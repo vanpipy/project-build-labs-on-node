@@ -22,9 +22,15 @@ const outputChunkInfo = ({
     }
 };
 
+const progressPlugin = new webpack.ProgressPlugin((percentage, msg, ...args) => {
+    process.stdout.write(`${Math.ceil(percentage * 100)}% ${msg} ${args} \r`);
+});
+
 const pack = (mode) => {
     const config = require(resolve(__dirname, `../configs/webpack.${mode}.config.js`));
     const compiler = webpack(config);
+
+    progressPlugin.apply(compiler);
 
     compiler.run((err, stats) => {
         if (err || stats.hasErrors()) {
@@ -36,6 +42,8 @@ const pack = (mode) => {
 const watch = (mode) => {
     const config = require(resolve(__dirname, `../configs/webpack.${mode}.config.js`));
     const compiler = webpack(config);
+
+    progressPlugin.apply(compiler);
 
     compiler.watch({
 
