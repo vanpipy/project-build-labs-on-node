@@ -3,12 +3,10 @@ const fs = require('fs');
 const fse = require('fs-extra');
 const { resolve } = require('path');
 
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
 const CWD = process.cwd();
 
 const defaultLibName = 'dist';
-const defaultLibIndex = 'index.html';
+const defaultAutoLoaderName = 'auto-loader.js';
 
 const readFileContent = (filepath, base = __dirname) => {
     return fs.readFileSync(resolve(base, filepath)).toString();
@@ -46,36 +44,34 @@ const generateConfig = (scriptFiles, root = defaultLibName) => {
         .map((each) => `${defaultLibName}/${each}`);
 };
 
-module.exports = (target) => {
+const writeTheSdkFile = (target, sdkContent) => {
+    fs.writeFileSync(resolve(target, defaultLibName, defaultAutoLoaderName), sdkContent);
+};
+
+const copyLibsToDest = (localLibraries, dest) => {
+    fse.copySync(resolve(__dirname, '..', defaultLibName), resolve(CWD, defaultLibName));
+};
+
+module.exports = (path) => {
+    const target = resolve(CWD, path);
     const scriptData = readFileContent('./mountSdkTemplate');
     const allFiles = readDirsBaseOnDir(`../${defaultLibName}`);
     const scriptFiles = getScriptFiles(allFiles);
     const config = generateConfig(scriptFiles);
     const mountSdkString = scriptData.replace('<config>', JSON.stringify(config));
-    const targetFile = resolve(CWD, target, defaultLibIndex);
-    const targetFileData = readFileContent(targetFile, CWD);
 
-    const { window } = new JSDOM(targetFileData);
-    const { document } = window;
-
-    let autoLoaderDom = document.querySelector('#autoloader');
-
-    if (autoLoaderDom) {
-        document.body.removeChild(autoLoaderDom);
+    if (!fs.existsSync(resolve(target, defaultLibName))) {
+        fs.mkdirSync(resolve(target, defaultLibName))
     }
 
-    autoLoaderDom = document.createElement('script');
-    autoLoaderDom.id = 'autoloader';
-    autoLoaderDom.type = 'text/javascript';
-    autoLoaderDom.innerHTML = mountSdkString;
-
-    document.body.appendChild(autoLoaderDom);
-
-    fs.writeFileSync(targetFile, `<!DOCTYPE html>\n${document.documentElement.outerHTML}`);
-
-    if (!fs.existsSync(resolve(CWD, defaultLibName))) {
-        fs.mkdirSync(resolve(CWD, defaultLibName))
+    if (fs.existsSync(resolve(CWD, defaultLibName))) {
+        fse.removeSync(resolve(CWD, defaultLibName));
     }
 
-    fse.copySync(resolve(__dirname, '..', defaultLibName), resolve(CWD, defaultLibName));
+    copyLibsToDest();
+    writeTheSdkFile(target, mountSdkString);
+
+    console.log(`
+        You can copy the script - <script src="./${defaultLibName}/${defaultAutoLoaderName}"></script> into your entry file
+    `);
 }

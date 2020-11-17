@@ -17,7 +17,7 @@ program
     .option('-m --mode <mode>', 'set the mode to execute the webpack');
 
 program
-    .option('--create-sdk <dir>', 'create the software development kit');
+    .option('--create-sdk [dir]', 'create the software development kit', '.');
 
 program.on('option:mode', () => {
     if (program.mode === DEV) {
