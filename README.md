@@ -1,3 +1,2 @@
 
-# Q: What is the project?
-A: On the way.
+# An Angualr to do list
