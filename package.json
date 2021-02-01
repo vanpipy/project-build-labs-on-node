@@ -4,7 +4,7 @@
   "description": "changelog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/vanpipy/project-build-labs-on-node/issues"
   },
-  "homepage": "https://github.com/vanpipy/project-build-labs-on-node#readme"
+  "homepage": "https://github.com/vanpipy/project-build-labs-on-node#readme",
+  "devDependencies": {
+    "auto-changelog": "^2.2.1"
+  }
 }
