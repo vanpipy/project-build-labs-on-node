@@ -1,0 +1,24 @@
+{
+  "name": "project-build-labs-on-node",
+  "version": "1.0.0",
+  "description": "A: On the way.",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "start": "snowpack dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanpipy/project-build-labs-on-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanpipy/project-build-labs-on-node/issues"
+  },
+  "homepage": "https://github.com/vanpipy/project-build-labs-on-node#readme",
+  "devDependencies": {
+    "snowpack": "^3.3.3"
+  }
+}
