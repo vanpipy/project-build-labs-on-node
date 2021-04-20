@@ -1,2 +1,11 @@
+function function_name(argument) {
+    const [hello, setHello] = React.useState();
+    return (
+        <h1>{hello}</h1>
+    );
+}
 
-console.log('Hello world');
+React.render(
+    <App />,
+    document.getElementById('app')
+);
