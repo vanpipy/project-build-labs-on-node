@@ -1,3 +1,5 @@
+# Custom MC(Model-Controller)
+It is a demo only.
 
-# Q: What is the project?
-A: On the way.
+# Reference
+* [express-api-es6-starter](https://github.com/mesaugat/express-api-es6-starter)
