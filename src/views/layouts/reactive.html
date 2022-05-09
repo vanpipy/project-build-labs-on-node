@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <% if (typeof title != 'undefined') { %>
+      <title><%= title %></title>
+    <% } %>
+    <% if (typeof title == 'undefined') { %>
+      <title>MVC Demo</title>
+    <% } %>
+    <% if (typeof links != 'undefined') { %>
+      <%- links %>
+    <% } %>
+  </head>
+  <body>
+    <div id="app"><%- content %></div>
+    <% if (typeof scripts != 'undefined') { %>
+      <%- scripts %>
+    <% } %>
+  </body>
+</html>

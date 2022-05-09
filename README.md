@@ -1,3 +1,2 @@
-
-# Q: What is the project?
-A: On the way.
+# The Application on Hapi
+It is a MVC demo.
