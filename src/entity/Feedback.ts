@@ -17,9 +17,9 @@ export class Feedback {
   @Column()
   phoneCode: string
 
-  @Column()
+  @Column({ default: '' })
   availableOn: string
 
-  @Column()
+  @Column({ default: '' })
   tellMeAboutYou: string
 }
