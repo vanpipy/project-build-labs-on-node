@@ -1,0 +1,86 @@
+{
+  "name": "@merchant/mui",
+  "version": "0.1.18",
+  "app": "src/index.html",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "main": "lib/emulator/merchant-mui-0.1.18.tgz",
+  "scripts": {
+    "start": "piral debug --target lib --config webpack.config.js",
+    "build": "piral build --target lib --fresh --config webpack.config.js && npm run postinstall",
+    "postinstall": "piral declaration --target lib",
+    "prepare": "husky",
+    "release": "standard-version",
+    "release:beta": "standard-version --prerelease beta",
+    "prepublishOnly": "npm run build"
+  },
+  "types": "lib/index.d.ts",
+  "importmap": {
+    "imports": {},
+    "inherit": [
+      "piral-base",
+      "piral-core",
+      "piral"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.5.1",
+    "@merchant/auth-tools": "0.2.7",
+    "@merchant/mui-auth": "0.1.11",
+    "antd": "5.21.6",
+    "axios": "^1.7.7",
+    "lodash": "^4.17.21",
+    "piral": "1.7.1",
+    "piral-base": "1.7.1",
+    "piral-cli": "1.7.1",
+    "piral-core": "1.7.1",
+    "piral-vue-3": "^1.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "5.3.4",
+    "react-router-dom": "5.3.4",
+    "tailwindcss": "^3.4.14",
+    "vue": "3.4.31"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@types/lodash": "^4.17.13",
+    "@types/node": "latest",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-router": "^5.1.20",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "autoprefixer": "^10.4.20",
+    "conventional-changelog-cli": "^4.1.0",
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-compat": "^4.1.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^13.1.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "piral-cli-webpack5": "1.7.1",
+    "piral-menu": "1.7.1",
+    "postcss-loader": "^8.1.1",
+    "prettier": "2.7.1",
+    "standard-version": "^9.5.0",
+    "tslib": "2.8.1",
+    "typescript": "5.6.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write -u"
+    ]
+  }
+}

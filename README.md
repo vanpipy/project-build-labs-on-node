@@ -1,3 +1,3 @@
+# 商家平台管理用户界面
 
-# Q: What is the project?
-A: On the way.
+TODO

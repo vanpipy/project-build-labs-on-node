@@ -1,0 +1,53 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.window-layout {
+  &__header {
+    padding: 0 16px;
+    height: 48px;
+    line-height: 1;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    inset-block: 0;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+
+    &--empty {
+      position: unset;
+      z-index: unset;
+    }
+
+    &-addon {
+      flex: 1;
+      width: 100%;
+    }
+  }
+
+  &__menu {
+    border-left: 1px solid #e0e0e0;
+    background-color: white;
+    position: fixed;
+    height: calc(100% - 48px);
+    inset-block-start: 48px;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+  }
+}

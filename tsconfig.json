@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "sourceMap": true,
+    "outDir": "./lib",
+    "skipLibCheck": true,
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "moduleResolution": "Bundler",
+    "module": "esnext",
+    "jsx": "react",
+    "importHelpers": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "*.js"
+  ]
+}
