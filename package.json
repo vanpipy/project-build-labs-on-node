@@ -1,0 +1,90 @@
+{
+  "name": "@merchant/mui-auth",
+  "version": "0.1.2",
+  "description": "merchant mui auth",
+  "keywords": [
+    "merchant",
+    "auth"
+  ],
+  "scripts": {
+    "start": "pilet debug --target lib/index.js --port 8000 --config webpack.config.js",
+    "build": "pilet build --target lib/index.js --fresh --config webpack.config.js",
+    "build:pkg": "father build",
+    "upgrade": "pilet upgrade",
+    "pack": "npm run build && pilet pack",
+    "postinstall": "pilet declaration --target lib",
+    "prepare": "husky",
+    "prepublishOnly": "npm run build:pkg",
+    "release": "standard-version",
+    "release:beta": "standard-version --prerelease beta"
+  },
+  "files": [
+    "lib",
+    "es"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "source": "src/index.tsx",
+  "importmap": {
+    "inherit": [
+      "@merchant/mui"
+    ],
+    "imports": {
+      "react": "react"
+    }
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.5.1",
+    "@merchant/auth-tools": "0.2.3",
+    "antd": "5.21.6",
+    "axios": "1.7.7",
+    "react": "^18.2.0",
+    "react-countdown": "^2.3.6",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.14"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@merchant/mui": "0.1.10",
+    "@types/node": "latest",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-router": "^5.1.20",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "autoprefixer": "^10.4.20",
+    "conventional-changelog-cli": "^4.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-compat": "^4.1.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "father": "4.4.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^13.1.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "piral-cli": "1.7.1",
+    "piral-cli-webpack5": "1.7.1",
+    "postcss-loader": "^8.1.1",
+    "prettier": "2.7.1",
+    "standard-version": "^9.5.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "tslib": "2.8.1",
+    "typescript": "5.6.3",
+    "webpack": "5.96.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write -u"
+    ]
+  }
+}
